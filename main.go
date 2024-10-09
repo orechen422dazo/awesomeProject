@@ -1,25 +1,13 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"os"
-)
+import "reflect"
+
+type Foo struct {
+	Name string
+}
 
 func main() {
-	f, err := os.Open("test.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer f.Close()
-
-	var b [512]byte
-
-	n, err := f.Read(b[:])
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(string(b[:n]))
+	var foo Foo
+	println(reflect.TypeOf(foo))
+	foo.Name = "foo"
 }
