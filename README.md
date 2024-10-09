@@ -1,4 +1,6 @@
 # Created for GoLand
+[Github Repository](https://github.com/orechen422dazo/awesomeProject)
+
 ### prosess
 1. [install go](https://formulae.brew.sh/formula/go)
 ```shell
