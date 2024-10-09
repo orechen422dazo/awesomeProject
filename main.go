@@ -2,23 +2,21 @@ package main
 
 import "fmt"
 
-type User struct {
-	Name string
-	Age  int
-}
+var v interface{}
 
-func Bob() *User {
-	// 関数ないの変数userのポインタを関数外へ返す
-	user := User{
-		Name: "Bob",
-		Age:  18,
+func PrintDetail(v interface{}) {
+	switch t := v.(type) {
+	case int, int32, int64:
+		fmt.Print("int/int32/int64 data type:", t)
+	case string:
+		fmt.Print("string", t)
+	default:
+		fmt.Print("unknown type")
 	}
-	return &user
 }
 
 func main() {
-	user := Bob()
-	user.Name = "Alice"
-	user.Age = 20
-	fmt.Println(user) // &{Alice 20}
+	v = 100
+	PrintDetail(v)
+	fmt.Println()
 }
