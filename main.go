@@ -2,24 +2,17 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"os"
+	"time"
 )
 
+func sayHello(s string) {
+	for i := 0; i < 5; i++ {
+		time.Sleep(100 * time.Millisecond)
+		fmt.Println(s)
+	}
+}
+
 func main() {
-	f, err := os.Open("test.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer f.Close()
-
-	var b [512]byte
-
-	n, err := f.Read(b[:])
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(string(b[:n]))
+	go sayHello("world")
+	sayHello("hello")
 }
